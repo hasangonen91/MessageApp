@@ -78,11 +78,7 @@ import React, {
       }, []);
 
       return (
-        // <>
-        //   {messages.map(message => (
-        //     <Text key={message._id}>{message.text}</Text>
-        //   ))}
-        // </>
+        
         <GiftedChat
           messages={messages}
           showAvatarForEveryMessage={false}
@@ -97,7 +93,7 @@ import React, {
           }}
           user={{
             _id: auth?.currentUser?.email,
-            avatar: 'https://i.pravatar.cc/300'
+            avatar: 'https://placeimg.com/140/140/any'
           }}
         />
       );

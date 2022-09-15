@@ -1,24 +1,65 @@
-import React, { useState } from "react";
+import React, { useState, Component } from "react";
 import {
   StyleSheet,
   Text,
   View,
-  Button,
   TextInput,
   Image,
   SafeAreaView,
   TouchableOpacity,
   ScrollView,
   Alert,
+  Dimensions,
+  Animated,
 } from "react-native";
 import { signInWithEmailAndPassword } from "firebase/auth";
 import { auth } from "../config/firebase";
-const backImage = require("../assets/backImage.png");
+
+import { BlurView } from 'expo-blur';
+
+
+class ImageLoader extends Component {
+    state = {
+      opacity: new Animated.Value(0),
+    }
+  
+    onLoad = () => {
+      Animated.timing(this.state.opacity, {
+        toValue: 1,
+        duration: 5000,
+        useNativeDriver: true,
+      }).start();
+    }
+  
+    render() {
+      return (
+        <Animated.Image
+          onLoad={this.onLoad}
+          {...this.props}
+          style={[
+            {
+              opacity: this.state.opacity,
+              transform: [
+                {
+                  scale: this.state.opacity.interpolate({
+                    inputRange: [0, 1],
+                    outputRange: [0.85, 1],
+                  })
+                },
+              ],
+            },
+            this.props.style,
+          ]}
+        />
+      );
+    }
+  }
+
 
 export default function Login({ navigation }) {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-
+  const {height} = Dimensions.get('window');
   const onHandleLogin = () => {
     if (email !== "" && password !== "") {
       signInWithEmailAndPassword(auth, email, password)
@@ -30,10 +71,15 @@ export default function Login({ navigation }) {
   return (
     <>
       <SafeAreaView style={styles.container}>
+      <Image source={{
+              uri: 'https://i.pinimg.com/originals/62/44/3d/62443df70f4d745953dbae0214825a99.jpg',
+            }} style={styles.backImage} />
         <ScrollView contentContainerStyle={styles.container}>
           <View style={styles.contentContainer}>
-            <Text style={styles.title}>Hello Again!</Text>
-            <Text style={styles.body}>Welcome back you've been missed!</Text>
+            
+          <BlurView intensity={150} style={styles.contentContainer}>
+           
+            <Text style={styles.text}>Login Message App!</Text>
 
             <TextInput
               style={styles.input}
@@ -81,7 +127,7 @@ export default function Login({ navigation }) {
             >
               <Text
                 style={{
-                  color: "gray",
+                  color: "black",
                   fontWeight: "600",
                   fontSize: 14,
                   marginTop: 0,
@@ -91,7 +137,7 @@ export default function Login({ navigation }) {
               </Text>
               <TouchableOpacity onPress={() => navigation.navigate("Signup")}>
                 <Text
-                  style={{ color: "#1F51FF", fontWeight: "600", fontSize: 14 }}
+                  style={{ color: "#1F51FF", fontWeight: "bold", fontSize: 15 }}
                 >
                   Sign Up
                 </Text>
@@ -128,7 +174,9 @@ export default function Login({ navigation }) {
                 />
               </TouchableOpacity>
             </View>
+            </BlurView>
           </View>
+          
         </ScrollView>
       </SafeAreaView>
     </>
@@ -138,28 +186,23 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     width: "100%",
-    alignItems: "center",
     justifyContent: "center",
-    backgroundColor: "#B6D0E2",
+    padding: 5,
   },
   contentContainer: {
-    paddingHorizontal: 30,
+    paddingHorizontal: 10,
+    
+    borderRadius: 16,
   },
-  title: {
-    fontSize: 32,
-    fontWeight: "700",
-    lineHeight: 35,
-    textAlign: "center",
-    color: "#353147",
-  },
-  body: {
+
+  text: {
     padding: 20,
     fontSize: 30,
     lineHeight: 35,
     marginBottom: 20,
-    fontWeight: "400",
+    fontWeight: "700",
     textAlign: "center",
-    color: "#353147",
+    color: "black",
   },
   buttonsText: {
     fontWeight: "500",
@@ -185,7 +228,7 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     width: "100%",
 
-    backgroundColor: "#DFE3E630",
+    backgroundColor: "transparent",
     marginTop: 40,
   },
   input: {
@@ -200,19 +243,11 @@ const styles = StyleSheet.create({
     borderRadius: 16,
     alignItems: "center",
     marginVertical: 20,
-    shadowOffset: {
-      width: 0,
-      height: 8,
-    },
-    shadowOpacity: 0.44,
-    shadowRadius: 10.32,
+    
   },
-  button: {
-    backgroundColor: "#f57c00",
-    height: 58,
-    borderRadius: 10,
-    justifyContent: "center",
-    alignItems: "center",
-    marginTop: 40,
+  backImage: {
+    width: "150%",
+    height: "150%",
+    position: "absolute",
   },
 });
