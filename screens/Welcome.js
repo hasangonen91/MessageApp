@@ -76,11 +76,10 @@ const Welcome = ({navigation}) => {
           
           <View style={styles.contentContainer}>
           <BlurView intensity={100} style={styles.blurContainer}>
-            <Text style={styles.title}>Discover your</Text>
-            <Text style={styles.title}>Dream job here</Text>
+            <Text style={styles.title}>Message App</Text>
+            <Text style={styles.title}>Let's Go</Text>
             <Text style={styles.body}>
-              Explore all the most exiting jobs roles based on your interest.
-              And study major
+            It's time to text, let's start right now
             </Text>
             <View style={styles.buttonContainer}>
               <TouchableOpacity 

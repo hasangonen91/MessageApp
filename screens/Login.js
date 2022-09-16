@@ -139,7 +139,7 @@ export default function Login({ navigation }) {
                 <Text
                   style={{ color: "#1F51FF", fontWeight: "bold", fontSize: 15 }}
                 >
-                  Sign Up
+                  Register
                 </Text>
               </TouchableOpacity>
             </View>
