@@ -91,8 +91,9 @@ npx yarn add @react-native-community/async-storage
 <a href="https://instagram.com/hasangonen91" target="blank"><img align="center" src="https://raw.githubusercontent.com/rahuldkjain/github-profile-readme-generator/master/src/images/icons/Social/instagram.svg" alt="hasangonen91" height="30" width="40" /></a>
 </p>
 
+<br>
 
-# LICENSE
+##  LICENSE
 
 <a href="https://github.com/hasangonen91/MessageApp/blob/master/LICENSE"> GNU General Public License v3.0 </a>
 
