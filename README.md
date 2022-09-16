@@ -53,6 +53,15 @@ This app is a real-time chat app built with React Native,<a href="https://fireba
 
 ## Dependencies
 
+Create " .env " file and write them you will get required data from Firebase.
+
+API_KEY= " copy and paste here "
+AUTH_DOMAIN=" copy and paste here "
+PROJECT_ID=" copy and paste here "
+STORAGE_BUCKET=" copy and paste here "
+MESSAGING_SENDER_ID=" copy and paste here "
+APP_ID=" copy and paste here "
+
 
 <strong>
 You can use "yarn" or "npm" to install dependencies.
