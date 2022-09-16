@@ -11,9 +11,9 @@ This App provides instant messaging thanks to React Native and Firebase.
 However, after registering to the app, it provides authentication when logging in.
 ```
 
-```
+
 ### Now let's explain our project in more detail:
-```
+
 
 ## 1-) Welcome Screen
 https://user-images.githubusercontent.com/45069041/190531684-55904a6f-ebd0-4103-beb7-6fd8afb9794e.mp4
